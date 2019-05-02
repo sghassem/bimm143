@@ -35,7 +35,7 @@ rescale(1:10)
 
 Try the rescale2() function that catches string inputs
 ```{r}
-rescale2(c(1:10, "string"))
+#rescale2(c(1:10, "string"))
 ```
 
 
@@ -302,7 +302,7 @@ grade <- function(x) {
 
 Test the function
 ```{r}
-grade(set1)
+# grade(set1)
 ```
 
 
