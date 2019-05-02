@@ -2,6 +2,7 @@
 #' title: "Class 5: R Graphics"
 #' author: "Saeed Ghassemzadeh"
 #' date: "April 16th, 2019"
+#' output: github_document
 #' ---
 
 # Class 5 R graphics
