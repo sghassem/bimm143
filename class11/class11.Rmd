@@ -1,0 +1,208 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## The PDB database
+
+The [PDB](http://www.rcsb.org/ ) is the main repository for biomolecular structure data. 
+
+Here we examine the contents of the PDB: 
+
+> Q1 Download a CSV file from the PDB site (accessible from “Analyze” -> “PDB Statistics” > “by Experimental Method and Molecular Type”. Move this CSV file into your RStudio project and determine the percentage of structures solved by X-Ray and Electron Microscopy. From the website what proportion of structures are protein? Aim to have a rendered GitHub document with working code that yields your answers.
+
+```{r}
+db <- read.csv("Data Export Summary.csv", row.names=1)
+head(db)
+```
+
+
+What percentage are X-Ray?
+```{r}
+db$Total[1]/(sum(db$Total)) * 100
+```
+
+What percentage are Electron Microscopy?
+```{r}
+db$Total[3]/(sum(db$Total)) * 100
+```
+
+What percentage are Protein?
+```{r}
+(sum(db$Proteins))/(sum(db$Total)) * 100
+```
+
+
+Using the datapasta package to copy paste any table into R without needing a .csv file
+```{r}
+library(datapasta)
+
+# copy table from site, and go to add-ins and paste as data frame
+# can paste any data table from any website, even if it doesn't have a .csv with it
+
+tmp <- data.frame(stringsAsFactors=FALSE,
+   Experimental.Method = c("X-Ray", "NMR", "Electron Microscopy", "Other",
+                           "Multi Method", "Total"),
+              Proteins = c(126880, 11062, 2277, 256, 129, 140604),
+         Nucleic.Acids = c(2012, 1279, 31, 4, 5, 3331),
+    ProteinComplex = c(6547, 259, 800, 6, 2, 7614),
+                 Other = c(8, 8, 0, 13, 1, 30),
+                 Total = c(135447, 12608, 3108, 279, 137, 151579)
+)
+
+View(tmp)
+
+```
+
+
+
+> Q2 Type HIV in the PDB website search box on the home page and determine how many HIV-1 protease structures are in the current PDB?
+There are 1157 structures as of 2019-05-07 (http://www.rcsb.org/pdb/results/results.do?tabtoshow=Current&qrid=ADAE5411)
+
+
+
+
+
+
+
+## Now working with Bio3D and pdb 
+
+
+```{r}
+library(bio3d)
+example(plot.bio3d)
+```
+
+
+
+Reading a pdb file
+```{r}
+pdb <- read.pdb("1hsg.pdb")
+pdb
+```
+
+
+
+
+
+
+```{r}
+aa321(pdb$atom$resid)
+```
+
+
+Atom selection is done via the function **atom.select()**
+
+```{r}
+prot.pdb <- atom.select(pdb, "protein", value=TRUE)
+write.pdb(prot.pdb, file="1hsg_protein.pdb")
+```
+
+
+```{r}
+lig.pdb <- atom.select(pdb, "ligand", value=TRUE)
+write.pdb(lig.pdb, file="1hsg.ligand.pdb")
+```
+
+
+
+
+
+Section 5 of the hands on worksheet
+
+
+```{r}
+aa <- get.seq("1ake_A")
+```
+
+```{r}
+# Blast or hmmer search
+b <- blast.pdb(aa)
+```
+
+```{r}
+# Plot a summary of search results
+hits <- plot(b)
+```
+
+
+```{r}
+head(hits$pdb.id)
+```
+
+
+
+```{r}
+# Fetch PDBs
+files <- get.pdb(hits$pdb.id, path="pdbs", split=TRUE, gzip=TRUE) 
+# Align structures
+pdbs <- pdbaln(files)
+# Vector containing PDB codes
+ids <- basename.pdb(pdbs$id)
+# Draw schematic alignment
+plot(pdbs, labels=ids)
+```
+
+
+
+```{r}
+# Calculate sequence conservation
+cons <- conserv(pdbs, method="entropy22") 
+# SSE annotations
+sse <- pdbs2sse(pdbs, ind=1, rm.gaps=FALSE)
+# Plot conservation per residue
+plotb3(cons, sse=sse, ylab="Sequence entropy")
+```
+
+
+
+```{r}
+library(XML)
+library(RCurl)
+anno <- pdb.annotate(ids) 
+print(unique(anno$source))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
