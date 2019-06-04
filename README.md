@@ -16,15 +16,15 @@ This is my class work from [BIMM 143 Spring 2019](https://bioboot.github.io/bimm
 
 [Class 12: Structural Bioinformatics II](https://github.com/sghassem/bimm143/blob/master/class12/class12.md)
 
-[Class 13: Genome Informatics](https://github.com/sghassem/bimm143/blob/master/class13/class13.md)
+[*Class 13: Genome Informatics](https://github.com/sghassem/bimm143/blob/master/class13/class13.md)
 
-[Class 14: Genome Informatics II](https://github.com/sghassem/bimm143/blob/master/class14/class14.md)
+[*Class 14: Genome Informatics II](https://github.com/sghassem/bimm143/blob/master/class14/class14.md)
 
-[Class 15: Pathway Analysis and the Interpretation of Gene Lists](https://github.com/sghassem/bimm143/blob/master/class15/class15.md)
+[*Class 15: Pathway Analysis and the Interpretation of Gene Lists](https://github.com/sghassem/bimm143/blob/master/class15/class15.md)
 
-[Class 17: Biological Network Analysis (.rmd file due to calls to Cytoscape)](https://github.com/sghassem/bimm143/blob/master/class17/class17.md)
+[*Class 17: Biological Network Analysis (.rmd file due to calls to Cytoscape)](https://github.com/sghassem/bimm143/blob/master/class17/class17.md)
 
-[Class 18: Cancer Genomics & Immunoinformatics](https://github.com/sghassem/bimm143/blob/master/class18/class18.md)
+[*Class 18: Cancer Genomics & Immunoinformatics](https://github.com/sghassem/bimm143/blob/master/class18/class18.md)
 
 
-(NOTE FOR TRANSPARENCY: Due to some data loss that occurred on my computer, I lost the work that I did in Classes 13-18. I spoke with Dr. Grant about this and he generously allowed me to host his files on my Github page. Thank you Dr. Grant!!)
+* (NOTE FOR TRANSPARENCY: Due to some data loss that occurred on my computer, I lost the work that I did in Classes 13-18. I spoke with Dr. Grant about this and he generously allowed me to host his files on my Github page. Thank you Dr. Grant!!)
