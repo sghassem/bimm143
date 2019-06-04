@@ -1,0 +1,143 @@
+---
+title: "Class 18: Cancer Genomics"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exploring the Cancer Genome Atlas
+
+Install the packages we need:
+
+```{r eval=FALSE}
+BiocManager::install( c("GenomicDataCommons", "TCGAbiolinks", "maftools") )
+```
+
+Load the packages
+
+```{r}
+library(GenomicDataCommons)
+library(TCGAbiolinks)
+library(maftools)
+```
+
+Can we talk witj the NCI-GDC?
+
+```{r}
+GenomicDataCommons::status()
+```
+
+```{r}
+cases_by_project <- cases() %>%
+  facet("project.project_id") %>%
+  aggregations()
+head(cases_by_project)
+```
+
+Make a summary plot for this data
+
+```{r}
+x <- cases_by_project$project.project_id
+barplot(x$doc_count, names.arg=x$key, log="y", las=2)
+
+```
+
+
+
+
+
+
+```{r}
+# Make a custom color vector for our plot
+colvec <- rep("lightblue", nrow(x))
+colvec[which(x$key == "TCGA-PAAD")] <- "red"
+
+# Plot with 'log' for y axis and rotate labels with 'las'
+par(mar=c(9,4,4,2))  
+barplot(x$doc_count, names.arg=x$key, log="y", col=colvec, las=2)
+```
+
+
+
+## Variant analysis with R
+
+```{r}
+maf.file <- GDCquery_Maf(tumor="PAAD", pipelines = "mutect")
+```
+
+Read the MAF file
+
+```{r}
+vars = read.maf(maf = maf.file, verbose = FALSE)
+```
+
+
+```{r}
+plotmafSummary(vars)
+```
+
+```{r}
+lollipopPlot(vars, gene='TP53')
+```
+
+# Part II. 
+
+## Identify tumor specific 9-mer peptides 
+
+```{r}
+library(bio3d)
+```
+
+
+```{r}
+seqs <- read.fasta("lecture18_sequences.fa")
+seqs
+```
+
+Now find where the sequences differ
+```{r}
+ide <- conserv(seqs, method = "identity")
+ide
+```
+
+```{r}
+miss.match.sites <- which(ide < 1)
+gap.sites <- gap.inspect(seqs)$t.inds
+
+```
+
+```{r}
+tumor.sites <- miss.match.sites[ !miss.match.sites %in% gap.sites ]
+```
+
+Now get the sequence with all possible 9-mers
+
+```{r}
+start.position <- tumor.sites - 8
+end.positions <- tumor.sites + 8
+
+```
+
+
+```{r}
+start.position[1]: end.positions[1]
+```
+
+Get the tummor sequence 
+
+```{r}
+seqs$ali[2, start.position[1]: end.positions[1] ]
+```
+
+
+
+
+
+
+
+
+
+
+
