@@ -12,6 +12,6 @@ This is my class work from [BIMM 143 Spring 2019](https://bioboot.github.io/bimm
 
 [Class 9: Unsupervised Learning II](https://github.com/sghassem/bimm143/blob/master/class09/class09.md)
 
-
+[Class 11: Structural Bioinformatics](https://github.com/sghassem/bimm143/blob/master/class11/class11.md)
 
 [Class 12: Structural Bioinformatics II](https://github.com/sghassem/bimm143/blob/master/class12/class12.md)
