@@ -27,4 +27,4 @@ This is my class work from [BIMM 143 Spring 2019](https://bioboot.github.io/bimm
 [*Class 18: Cancer Genomics & Immunoinformatics](https://github.com/sghassem/bimm143/blob/master/class18/class18.md)
 
 
-* (NOTE FOR TRANSPARENCY: Due to some data loss that occurred on my computer, I lost the work that I did in Classes 13-18. I spoke with Dr. Grant about this and he generously allowed me to host his files on my Github page. Thank you Dr. Grant!!)
+*(NOTE FOR TRANSPARENCY: Due to some data loss that occurred on my computer, I lost the work that I did in Classes 13-18. I spoke with Dr. Grant about this and he generously allowed me to host his files on my Github page. Thank you Dr. Grant!!)
