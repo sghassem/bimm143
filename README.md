@@ -22,7 +22,7 @@ This is my class work from [BIMM 143 Spring 2019](https://bioboot.github.io/bimm
 
 [*Class 15: Pathway Analysis and the Interpretation of Gene Lists](https://github.com/sghassem/bimm143/blob/master/class15/class15.md)
 
-[*Class 17: Biological Network Analysis (.rmd file due to calls to Cytoscape)](https://github.com/sghassem/bimm143/blob/master/class17/class17.rmd)
+[*Class 17: Biological Network Analysis (.rmd file due to calls to Cytoscape)](https://github.com/sghassem/bimm143/blob/master/class17/class17.Rmd)
 
 [*Class 18: Cancer Genomics & Immunoinformatics](https://github.com/sghassem/bimm143/blob/master/class18/class18.md)
 
